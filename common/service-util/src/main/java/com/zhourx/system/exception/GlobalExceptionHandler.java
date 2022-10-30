@@ -15,4 +15,12 @@ public class GlobalExceptionHandler {
         e.printStackTrace();
         return Result.fail().message("执行了全局异常处理");
     }
+
+    // 指定特定异常处理器
+    @ExceptionHandler(MyException.class)
+    @ResponseBody
+    public Result error(MyException myException){
+        myException.printStackTrace();
+        return Result.fail().code(myException.getCode()).message(myException.getMsg());
+    }
 }

@@ -10,7 +10,7 @@
         from sys_role
         <where>
             <if test="vo.roleName != null and vo.roleName != ''">
-                and rele_name LIKE CONCAT('%',#{vo.roleName},'%')
+                and role_name LIKE CONCAT('%',#{vo.roleName},'%')
             </if>
             and is_deleted = 0
         </where>

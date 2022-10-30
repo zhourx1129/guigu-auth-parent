@@ -25,13 +25,13 @@ public class SysRoleController {
         return isSuccess ? Result.ok() : Result.fail();
     }
 
-    @GetMapping("findRoleById/{id}")
+    @GetMapping("/{id}")
     public Result findRoleById(@PathVariable Long id){
         SysRole roleServiceById = sysRoleService.getById(id);
         return Result.ok(roleServiceById);
     }
 
-    @PostMapping("save")
+    @PostMapping
     public Result saveRole(@RequestBody SysRole sysRole){
         boolean isSuccess = sysRoleService.save(sysRole);
         if (isSuccess) {
@@ -67,7 +67,7 @@ public class SysRoleController {
      * @param id id
      * @return boolean
      */
-    @DeleteMapping("remove/{id}")
+    @DeleteMapping("/{id}")
     public Result removeRole(@PathVariable Long id){
         boolean isSuccess = sysRoleService.removeById(id);
         if (isSuccess) {
@@ -82,7 +82,7 @@ public class SysRoleController {
      * 查找所有纪录的接口
      * @return {@link List}<{@link SysRole}>
      */
-    @GetMapping("findAll")
+    @GetMapping
     public Result findAll(){
         List<SysRole> list = sysRoleService.list();
         return Result.ok(list);
