@@ -25,12 +25,24 @@ public class SysRoleController {
         return isSuccess ? Result.ok() : Result.fail();
     }
 
+
+    /**
+     * 通过id查询角色
+     * @param id id
+     * @return {@link Result}
+     */
     @GetMapping("/{id}")
     public Result findRoleById(@PathVariable Long id){
         SysRole roleServiceById = sysRoleService.getById(id);
         return Result.ok(roleServiceById);
     }
 
+
+    /**
+     * 添加角色
+     * @param sysRole 系统作用
+     * @return {@link Result}
+     */
     @PostMapping
     public Result saveRole(@RequestBody SysRole sysRole){
         boolean isSuccess = sysRoleService.save(sysRole);
@@ -41,6 +53,13 @@ public class SysRoleController {
         }
     }
 
+    /**
+     * 分页查询
+     * @param page           页面
+     * @param limit          限制
+     * @param sysRoleQueryVo 系统角色查询签证官
+     * @return {@link Result}
+     */
     @GetMapping("{page}/{limit}")
     public Result findPageQueryRole(@PathVariable Long page, @PathVariable Long limit,
                                     SysRoleQueryVo sysRoleQueryVo){
